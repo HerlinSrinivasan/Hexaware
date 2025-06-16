@@ -1,3 +1,5 @@
+TOPIC VirtualArtGallery
+
 create database VirtualArtGalleryDB
 use VirtualArtGalleryDB
 
