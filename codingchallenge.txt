@@ -76,8 +76,8 @@ INSERT INTO ExhibitionArtworks (ExhibitionID, ArtworkID) VALUES
 /*Retrieve the names of all artists along with the number of artworks they have in the gallery, and list them in descending order of the number of artworks. */
 
 SELECT a.name as Artist_Name,
-Count(ar.ArtworkID) as Artwork_Count
-from Artists a
+COUNT(ar.ArtworkID) as Artwork_Count
+FROM Artists a
 left join Artworks ar 
 on a.ArtistID = ar.ArtistID 
 GROUP BY a.Name
@@ -87,7 +87,7 @@ ORDER BY Artwork_Count DESC
 and order them by the year in ascending order.*/
 
 SELECT a.name,ar.title,a.nationality,ar.year
-from Artists a
+FROM Artists a
 JOIN Artworks ar
 ON a.ArtistID= ar.ArtistID
 WHERE a.Nationality='Spanish' or a.Nationality='Dutch'
@@ -97,8 +97,8 @@ ORDER BY ar.year
 artworks they have in this category.*/
 
 SELECT a.name as Artist_Name,c.name as Category,
-Count(ar.ArtworkID) as Painting_Count
-from Artists a
+COUNT(ar.ArtworkID) as Painting_Count
+FROM Artists a
 JOIN Artworks ar
 ON a.ArtistID= ar.ArtistID
 JOIN Categories c
@@ -154,13 +154,13 @@ GROUP BY c.name
 
 /* List artists who have more than 3 artworks in the gallery. */
 
-select a.name as Artist_Name,
-Count(ar.ArtworkID) as Artwork_Count
-from Artists a
-Join Artworks ar
-on  a.ArtistID = ar.ArtistID
-group by a.name
-having Count(ar.ArtworkID) > 3
+SELECT a.name as Artist_Name,
+COUNT (ar.ArtworkID) as Artwork_Count
+FROM Artists a
+JOIN Artworks ar
+ON  a.ArtistID = ar.ArtistID
+GROUP BY a.name
+HAVING Count(ar.ArtworkID) > 3
 
 /*Find the artworks created by artists from a specific nationality (e.g., Spanish).*/
 
@@ -204,10 +204,9 @@ WHERE a.Nationality='Spanish'
    /*   List the total number of artworks in each category.  */
 
    SELECT c.name as Category,count(ar.Title) as Artistwork_Count
-FROM Artworks ar
-JOIN Categories c
-ON ar.CategoryID=c.categoryID
-GROUP BY c.name
+   FROM Artworks ar
+   JOIN Categories c ON ar.CategoryID=c.categoryID
+   GROUP BY c.name
 
 /* Find the artists who have more than two artworks in the gallery.*/
 
