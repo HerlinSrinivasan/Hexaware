@@ -180,7 +180,7 @@ WHERE a.Nationality='Spanish'
  on ea.ArtworkID = ar.ArtworkID
  join Artists a
  on ar.ArtistID= a.ArtistID
- where a.name in ('Vincent van Gogh','Leonardo da Vinci.')
+ where a.name in ('Vincent van Gogh','Leonardo da Vinci')
  group by e.ExhibitionID,e.Title
  having count(distinct a.Name)=2
 
@@ -199,7 +199,7 @@ WHERE a.Nationality='Spanish'
    join Artworks ar
    on a.ArtistID = ar.ArtistID
    group by  a.name,a.ArtistID
-   having count ( distinct ar.categoryID )
+   having count ( distinct ar.categoryID ) = ( SELECT COUNT (*) FROM Categories)
 
    /*   List the total number of artworks in each category.  */
 
