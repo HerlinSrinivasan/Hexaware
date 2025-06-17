@@ -97,7 +97,7 @@ ORDER BY ar.year
 artworks they have in this category.*/
 
 SELECT a.name as Artist_Name,c.name as Category,
-COUNT(ar.ArtworkID) as Painting_Count
+COUNT(ar.ArtworkID) as Artworks_Count
 FROM Artists a
 JOIN Artworks ar
 ON a.ArtistID= ar.ArtistID
@@ -259,7 +259,7 @@ select distinct ArtworkID from ExhibitionArtworks)
 
 /*Show artists who have artworks in the same category as "Mona Lisa." */
 
-select distinct a.name as artist_name
+select distinct a.name as artist_name,ar.Title as Artwork_Title
 from artists a
 join artworks ar
 on a.artistid=ar.ArtistID
